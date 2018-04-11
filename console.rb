@@ -9,3 +9,18 @@ artist1 = Artist.new(
 )
 
 artist1.save()
+
+album1 = Album.new(
+  {
+    "title" => "Happy Birthday",
+    "genre" => "Rock",
+    "artist_id" => artist1.id()
+  }
+)
+
+album1.save()
+
+
+binding.pry
+
+nil
