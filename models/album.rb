@@ -18,17 +18,25 @@ attr_writer :title, :genre
     result = SqlRunner.run(sql, values)
     @id = result[0]["id"].to_i
   end
-  # 
+  #
   # def show_all()
   #   sql = "SELECT * FROM albums;"
   #   SqlRunner.run(sql)
   # end
 
   def show_all()
-    sql = "SELECT * FROM albums WHERE artist_id = $1"
+    sql = "SELECT * FROM albums"
     values = [@id]
     results = SqlRunner.run(sql, values)
     return results.map{|result| Album.new(result)}
   end
+
+
+  # def filter_by_artist()
+  #   sql = "SELECT * FROM albums WHERE artist_id = $1"
+  #   values = []
+  #   results = SqlRunner.run(sql, values)
+  #   return results.map{|result| Album.new(result)}
+  # end
 
 end

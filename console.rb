@@ -10,6 +10,14 @@ artist1 = Artist.new(
 
 artist1.save()
 
+artist2 = Artist.new(
+  {
+    "name" => "Bobby"
+  }
+)
+
+artist2.save()
+
 album1 = Album.new(
   {
     "title" => "Happy Birthday",
@@ -20,6 +28,25 @@ album1 = Album.new(
 
 album1.save()
 
+album2 = Album.new(
+  {
+    "title" => "Drummer Boy",
+    "genre" => "Reggae",
+    "artist_id" => artist2.id()
+  }
+)
+
+album2.save()
+
+album3 = Album.new(
+  {
+    "title" => "Fast Cars",
+    "genre" => "Reggae",
+    "artist_id" => artist2.id()
+  }
+)
+
+album3.save()
 
 binding.pry
 
