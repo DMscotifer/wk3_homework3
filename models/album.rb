@@ -33,6 +33,23 @@ attr_writer :title, :genre
     SqlRunner.run(sql, values)
   end
 
+  def delete()
+    sql = "DELETE FROM albums WHERE id = $1;"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
 
+  def self.delete_all()
+    sql = "DELETE FROM albums"
+    SqlRunner.run(sql)
+  end
+
+  def album()
+    sql = "SELECT * FROM album WHERE id = $1;"
+    values = [@id]
+    album = SqlRunner.run(sql, values)
+    album_hash = album[0]
+    return Album.new(album_hash)
+  end
 
 end
