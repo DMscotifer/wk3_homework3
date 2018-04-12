@@ -18,7 +18,7 @@ attr_accessor :name
     @id = result[0]["id"].to_i
   end
 
-  def list()
+  def self.show_all()
     sql = "SELECT * FROM artists;"
     results = SqlRunner.run(sql)
     return results.map{|result| Artist.new(result)}

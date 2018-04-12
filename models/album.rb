@@ -20,11 +20,10 @@ attr_writer :title, :genre
   end
 
 
-  def show_all()
-    sql = "SELECT * FROM albums"
-    values = [@id]
-    results = SqlRunner.run(sql, values)
-    return results.map{|result| Album.new(result)}
+  def self.show_all()
+    sql = "SELECT * FROM albums;"
+    results = SqlRunner.run(sql)
+    return results.map{|result| self.new(result)}
   end
 
   def update()
@@ -45,7 +44,7 @@ attr_writer :title, :genre
   end
 
   def album()
-    sql = "SELECT * FROM album WHERE id = $1;"
+    sql = "SELECT * FROM albums WHERE id = $1;"
     values = [@id]
     album = SqlRunner.run(sql, values)
     album_hash = album[0]
